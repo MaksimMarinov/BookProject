@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="fragments/head"></head>
+
+
+<body>
+
+<div th:include="fragments/nav">
+    Navbar
+</div>
+
+<div class="container">
+    <h2 class="text-center">Register User</h2>
+    <form
+            th:action="@{/users/register}"
+            th:method="post"
+            th:object="${userModel}"
+            class="main-form mx-auto col-md-18 d-flex flex-column justify-content-center">
+        <div class="row">
+            <div class="form-group text-center col-md-6 mb-3">
+                <label for="firstName" class="login font-weight-bold">First Name</label>
+                <input
+                    id="firstName"
+                    th:field="*{firstName}"
+                    th:errorclass="bg-danger"
+                    type="text"
+                    class="form-control"
+                    placeholder="First name"/>
+                <p th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"
+                   id="firstNameHelpInline" class="bg-danger text-dark rounded">>>
+                    First name is required and should be between 4 and 20 symbols.
+                </p>
+            </div>
+            <div class="form-group text-center col-md-6 mb-3">
+                <label for="lastName" class="login font-weight-bold">Last Name</label>
+                <input id="lastName"
+                       name="lastName"
+                       th:field="*{lastName}"
+                       th:errorclass="bg-danger"
+                       type="text"
+                       class="form-control"
+                       placeholder="Last name"/>
+                <p th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"
+                   id="lastNameHelpInline" class="bg-danger text-dark rounded">>
+                    Last name is required and should be between 4 and 20 symbols.
+                </p>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="form-group text-center col-md-6 mb-3">
+                <label for="username" class="login font-weight-bold">Username</label>
+                <input id="username"
+                       name="username"
+                       th:field="*{username}"
+                       th:errorclass="bg-danger"
+                       type="text"
+                       class="form-control"
+                       placeholder="Username"/>
+                <small th:if="${#fields.hasErrors('username')}" th:errors="*{username}"
+                       id="usernameHelpInline" class="bg-danger text-dark rounded">
+                    Username error.
+                </small>
+
+            </div>
+            <div class="form-group text-center col-md-6 mb-3">
+                <label for="email" class="login font-weight-bold">Email</label>
+                <input id="email"
+                       name="username"
+                       th:field="*{email}"
+                       th:errorclass="bg-danger"
+                       type="email"
+                       class="form-control"
+                       placeholder="Email"/>
+                <small th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
+                       id="emailHelpInline" class="bg-danger text-dark rounded">
+                    Email error.
+                </small>
+            </div>
+
+        </div>
+        <div class="row">
+        <div class="form-group text-center col-md-6 mb-3">
+            <label for="password" class="login font-weight-bold">Password</label>
+            <input id="password"
+                   name="password"
+                   th:field="*{password}"
+                   th:errorclass="bg-danger"
+                   type="password"
+                   class="form-control"
+                   placeholder="Password"/>
+            <small th:if="${#fields.hasErrors('password')}" th:errors="*{password}"
+                   id="passwordHelpInline" class="bg-danger text-dark rounded">
+                Password error.
+            </small>
+        </div>
+        <div class="form-group text-center col-md-6 mb-3">
+            <label for="confirmPassword" class="login font-weight-bold">Confirm Password</label>
+            <input id="confirmPassword"
+                   th:field="*{confirmPassword}"
+                   th:errorclass="bg-danger"
+                   type="password"
+                   class="form-control"
+                   placeholder="Confirm your password"/>
+            <small th:if="${#fields.hasErrors('confirmPassword')}" th:errors="*{confirmPassword}"
+                   id="confirmPasswordHelpInline" class="bg-danger text-dark rounded">
+                Confirmation password is required.
+            </small>
+            <strong th:if="${passwordsNotMatched}"  id="passwordsNotMatchedHelpInline" class="bg-danger text-dark rounded">
+                Confirm password and password did not match!.</strong>
+        </div>
+
+        </div>
+
+        <div th:if="${userNameOccupied}" class="row">
+            <div class="form-group col-md-12 mb-6">
+                <p class="errors alert alert-danger">
+                    Username is occupied.
+                </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col col-md-4">
+                <div class="button-holder d-flex">
+                    <input type="submit" class="btn btn-info btn-lg" value="Create account"/>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div>
+     <footer th:include="~{fragments/footer}"> </footer>
+</div>
+
+</body>
+</html>
