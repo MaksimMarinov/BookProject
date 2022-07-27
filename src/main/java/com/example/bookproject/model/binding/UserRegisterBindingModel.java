@@ -50,6 +50,7 @@ public class UserRegisterBindingModel {
         return this;
     }
 
+    @NotBlank(message = "email cannot be blank")
     @Email(message = "Enter valid email")
     public String getEmail() {
         return email;

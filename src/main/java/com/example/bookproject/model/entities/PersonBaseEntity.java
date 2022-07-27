@@ -3,7 +3,7 @@ package com.example.bookproject.model.entities;
 import javax.persistence.MappedSuperclass;
 
 @MappedSuperclass
-public class HumanEntity extends BaseEntity {
+public class PersonBaseEntity extends BaseEntity {
 
     private String firstName;
     private String lastName;
@@ -12,7 +12,7 @@ public class HumanEntity extends BaseEntity {
         return firstName;
     }
 
-    public HumanEntity setFirstName(String firstName) {
+    public PersonBaseEntity setFirstName(String firstName) {
         this.firstName = firstName;
         return this;
     }
@@ -21,7 +21,7 @@ public class HumanEntity extends BaseEntity {
         return lastName;
     }
 
-    public HumanEntity setLastName(String lastName) {
+    public PersonBaseEntity setLastName(String lastName) {
         this.lastName = lastName;
         return this;
     }

@@ -6,6 +6,6 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "authors")
-public class AuthorEntity extends HumanEntity {
+public class AuthorEntity extends PersonBaseEntity {
 
 }

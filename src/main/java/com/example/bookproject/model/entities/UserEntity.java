@@ -1,12 +1,11 @@
 package com.example.bookproject.model.entities;
 
 import javax.persistence.*;
-import javax.validation.constraints.Min;
 import java.util.List;
 
 @Entity
 @Table(name = "users")
-public class UserEntity extends HumanEntity {
+public class UserEntity extends PersonBaseEntity {
 
     private String username;
     private String password;
